@@ -18,10 +18,14 @@ geocode.geocodeAddress(argv.a, (errorMessage, results) =>{
 if (errorMessage){
 	console.log(errorMessage);
 } else {
-	console.log(JSON.stringify(results,undefined,2));
-	weather.getWeather(results.latitude,results.longitude, (results) =>{
-		console.log(results);
-});
+	console.log(results.address);
+	weather.getWeather(results.latitude,results.longitude, (errorMessage, weatherResults) =>{
+		if (errorMessage) {
+			console.log(errorMessage);
+		} else {
+			console.log(`Temperature: ${weatherResults.temperature}`);
+			console.log(`Apparent Temperature: ${weatherResults.apparentTemperature}`);
+		}
+	});
 }
 });
-

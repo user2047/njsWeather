@@ -21,9 +21,9 @@ if (error) {
 	callBack("Unable to find that address");
 } else if (body.status === "OK") {
 	callBack(undefined, {
-    Address: `Address: ${body.results[0].formatted_address}`,
-    Latitude: `Latitude: ${body.results[0].geometry.location.lat}`,
-    Longitude: `Longitude: ${body.results[0].geometry.location.lng}`
+    address: body.results[0].formatted_address,
+    latitude: body.results[0].geometry.location.lat,
+    longitude: body.results[0].geometry.location.lng
 })
 }
 });
